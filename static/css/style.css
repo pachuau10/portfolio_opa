@@ -176,7 +176,22 @@ ul, ol { list-style: none; }
   position: relative;
   z-index: 2;
   letter-spacing: -0.02em;
-  margin-top: 2rem;
+  /* Adjust this margin to control the gap precisely */
+  margin-top: 1rem; 
+  margin-bottom: 1.5rem; 
+}
+
+.hero-meta {
+  display: flex; 
+  justify-content: space-between;
+  /* Set margin-top to 0 to remove the extra gap */
+  margin-top: 0; 
+  font-size: .82rem;
+  letter-spacing: .35em;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  animation: fadeUp 1s var(--ease) 2s both;
 }
 .hero-line { display: block; }
 .hero-line .italic { font-style: italic; font-family: var(--display); }
@@ -192,8 +207,10 @@ ul, ol { list-style: none; }
 }
 
 .hero-meta {
-  display: flex; justify-content: space-between;
-  margin-top: 2rem;
+  display: flex; 
+  justify-content: space-between;
+  /* Set margin-top to 0 to remove the extra gap */
+  margin-top: 0; 
   font-size: .82rem;
   letter-spacing: .35em;
   color: var(--ink-soft);
