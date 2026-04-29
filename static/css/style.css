@@ -127,13 +127,15 @@ ul, ol { list-style: none; }
   flex-direction: column;
 }
 .hero-grid {
-  width: 100%; max-width: var(--container);
+  width: 100%;
+  max-width: var(--container);
   margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 12rem);
-  justify-content: space-between;
+  min-height: auto;
+  justify-content: flex-start;
+  gap: 2rem;
 }
 .hero-collage {
   display: flex;
