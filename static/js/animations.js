@@ -7,8 +7,10 @@
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
-        // animate any skill bars inside
         entry.target.querySelectorAll && entry.target.querySelectorAll('.skill-bar').forEach(function (b) { b.classList.add('in-view'); });
+      } else {
+        entry.target.classList.remove('in-view');
+        entry.target.querySelectorAll && entry.target.querySelectorAll('.skill-bar').forEach(function (b) { b.classList.remove('in-view'); });
       }
     });
   }, { threshold: 0.12 });
