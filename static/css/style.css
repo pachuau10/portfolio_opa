@@ -626,7 +626,7 @@ ul, ol { list-style: none; }
   }
 
   .hero-grid {
-    min-height: calc(100dvh - 6.5rem);
+    min-height: unset;
     justify-content: flex-start;
     display: flex;
     flex-direction: column;
@@ -663,7 +663,7 @@ ul, ol { list-style: none; }
     gap: 0.4rem;
     font-size: 0.7rem;
     text-align: center;
-    margin-top: auto;
+    margin-top: 0;
     padding-top: 1rem;
   }
 
