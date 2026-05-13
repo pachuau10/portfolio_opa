@@ -43,18 +43,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Mobile nav
+  // Mobile nav — toggles the <nav id="siteNav"> overlay
   var toggle = document.getElementById('navToggle');
-  var list = document.getElementById('navList');
-  if (toggle && list) {
+  var nav = document.getElementById('siteNav');
+  if (toggle && nav) {
     toggle.addEventListener('click', function () {
       toggle.classList.toggle('open');
-      list.classList.toggle('open');
+      nav.classList.toggle('open');
     });
-    list.querySelectorAll('a').forEach(function (a) {
+    nav.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         toggle.classList.remove('open');
-        list.classList.remove('open');
+        nav.classList.remove('open');
       });
     });
   }

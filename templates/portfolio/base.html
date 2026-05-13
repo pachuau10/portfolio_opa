@@ -11,25 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-
   <!-- OG Meta Tags -->
-<meta property="og:title" content="Lalawmpuia Ralte — Videographer / Video Editor">
-<meta property="og:description" content="Creative videographer and video editor based in Aizawl, Mizoram. Specializing in short films, music videos, documentaries and brand work.">
-<meta property="og:image" content="https://res.cloudinary.com/dqquazig1/image/upload/v1777472998/og-image_1_swxeri.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://lalawmpuia_ralte.com">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Lalawmpuia Ralte Portfolio">
+  <meta property="og:title" content="Lalawmpuia Ralte — Videographer / Video Editor">
+  <meta property="og:description" content="Creative videographer and video editor based in Aizawl, Mizoram. Specializing in short films, music videos, documentaries and brand work.">
+  <meta property="og:image" content="https://res.cloudinary.com/dqquazig1/image/upload/v1777472998/og-image_1_swxeri.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://lalawmpuia_ralte.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lalawmpuia Ralte Portfolio">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lalawmpuia Ralte — Videographer / Video Editor">
-<meta name="twitter:description" content="Creative videographer and video editor based in Aizawl, Mizoram.">
-<meta name="twitter:image" content="https://your-image-url-here.jpg">
-
-<!-- General -->
-<meta name="description" content="Creative videographer and video editor based in Aizawl, Mizoram. Specializing in short films, music videos, documentaries and brand work.">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lalawmpuia Ralte — Videographer / Video Editor">
+  <meta name="twitter:description" content="Creative videographer and video editor based in Aizawl, Mizoram.">
+  <meta name="twitter:image" content="https://your-image-url-here.jpg">
 </head>
 <body>
 
@@ -48,17 +44,21 @@
   <!-- Sticky header -->
   <header class="site-header" id="siteHeader">
     <a href="#top" class="brand">LALAWMPUIA RALTE</a>
-    <nav class="nav">
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-<ul class="nav-list" id="navList">
-  <li><a href="{% url 'index' %}">Home</a></li>
-  <li><a href="{% url 'index' %}#about">About</a></li>
-  <li><a href="{% url 'index' %}#gallery">Gallery</a></li>
-  <li><a href="{% url 'index' %}#experience">Experience</a></li>
-  <li><a href="{% url 'index' %}#contact">Contact</a></li>
-</ul>
+
+    <!-- Hamburger sits OUTSIDE the nav so it's always visible -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Nav overlay -->
+    <nav class="nav site-nav" id="siteNav">
+      <ul class="nav-list" id="navList">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'index' %}#about">About</a></li>
+        <li><a href="{% url 'index' %}#gallery">Gallery</a></li>
+        <li><a href="{% url 'index' %}#experience">Experience</a></li>
+        <li><a href="{% url 'index' %}#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -72,23 +72,24 @@
       <span class="footer-meta">VIDEOGRAPHER / VIDEO EDITOR</span>
       <span class="footer-meta">© 2026</span>
     </div>
-<div class="footer-links">
-  <a href="https://www.instagram.com/ralteawmpuia_" aria-label="Instagram" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <circle cx="12" cy="12" r="4"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-    </svg>
-    Instagram
-  </a>
-<a href="mailto:ralteawmpuia11@gmail.com" aria-label="Email">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="4" width="20" height="16" rx="2"/>
-      <polyline points="2,4 12,13 22,4"/>
-    </svg>
-    hello@lalawmpuia.dev
-  </a>
-</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/ralteawmpuia_" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+      <a href="mailto:ralteawmpuia11@gmail.com" aria-label="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+        hello@lalawmpuia.dev
+      </a>
+    </div>
+  </footer>
 
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/animations.js' %}"></script>

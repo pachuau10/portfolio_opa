@@ -102,7 +102,15 @@ ul, ol { list-style: none; }
   font-family: var(--serif);
   font-style: italic;
 }
-.nav-list a { position: relative; padding: .25rem 0; transition: color .25s var(--ease); }
+.nav-list a {
+  position: relative;
+  padding: .25rem 0;
+  transition: color .25s var(--ease);
+  /* Minimum tap target height */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
 .nav-list a::after {
   content: ''; position: absolute; left: 0; bottom: 0;
   width: 0; height: 1px; background: var(--crimson-2);
@@ -110,7 +118,7 @@ ul, ol { list-style: none; }
 }
 .nav-list a:hover { color: var(--crimson-2); }
 .nav-list a:hover::after { width: 100%; }
-.nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: .5rem; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: .5rem; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
 .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all .3s var(--ease); }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
@@ -176,16 +184,14 @@ ul, ol { list-style: none; }
   position: relative;
   z-index: 2;
   letter-spacing: -0.02em;
-  /* Adjust this margin to control the gap precisely */
-  margin-top: 1rem; 
-  margin-bottom: 1.5rem; 
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-meta {
-  display: flex; 
+  display: flex;
   justify-content: space-between;
-  /* Set margin-top to 0 to remove the extra gap */
-  margin-top: 0; 
+  margin-top: 0;
   font-size: .82rem;
   letter-spacing: .35em;
   color: var(--ink-soft);
@@ -204,19 +210,6 @@ ul, ol { list-style: none; }
 @keyframes revealUp {
   from { opacity: 0; transform: translateY(60%); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-meta {
-  display: flex; 
-  justify-content: space-between;
-  /* Set margin-top to 0 to remove the extra gap */
-  margin-top: 0; 
-  font-size: .82rem;
-  letter-spacing: .35em;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--line);
-  padding-top: 1.5rem;
-  animation: fadeUp 1s var(--ease) 2s both;
 }
 
 /* ----- Section base ----- */
@@ -255,6 +248,7 @@ ul, ol { list-style: none; }
   text-transform: uppercase;
   font-weight: 300;
   transition: color .3s var(--ease), padding .3s var(--ease);
+  min-height: 44px;
 }
 .index-list a:hover { color: var(--crimson-2); padding-left: 1rem; }
 .index-list .num { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--ink-soft); }
@@ -393,6 +387,8 @@ ul, ol { list-style: none; }
   padding: .75rem 0;
   outline: none;
   transition: border-color .3s var(--ease);
+  /* Minimum touch target height */
+  min-height: 44px;
 }
 .form-input:focus { border-color: var(--crimson-2); }
 .form-input::placeholder { color: var(--muted); }
@@ -408,6 +404,8 @@ ul, ol { list-style: none; }
   cursor: pointer; align-self: flex-start;
   position: relative; overflow: hidden;
   transition: background .35s var(--ease), letter-spacing .35s var(--ease);
+  /* Minimum touch target */
+  min-height: 44px;
 }
 .btn-primary::before {
   content: ''; position: absolute; inset: 0;
@@ -468,6 +466,7 @@ ul, ol { list-style: none; }
   color: var(--ink-soft);
   margin-bottom: 2.5rem;
   transition: color .25s var(--ease), gap .25s var(--ease);
+  min-height: 44px;
 }
 .detail-back:hover { color: var(--crimson-2); gap: .9rem; }
 .detail-header {
@@ -549,44 +548,89 @@ ul, ol { list-style: none; }
   margin-bottom: 2rem;
 }
 
+.gallery-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 1.25rem 1.25rem;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--crimson-2);
+  transition: gap .3s var(--ease);
+  min-height: 44px;
+}
+.gallery-card-link:hover .gallery-readmore {
+  gap: .85rem;
+}
+
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE — Tablet (960px)
+   ===================================================== */
+
+@media (max-width: 960px) {
+  /* Gallery drops to 2 columns on tablets */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  /* Three-col index layout collapses */
+  .two-col { grid-template-columns: 1fr 1fr; }
+}
+
+/* =====================================================
+   RESPONSIVE — Mobile (768px)
    ===================================================== */
 
 @media (max-width: 768px) {
 
   .site-header { padding: 1.2rem 1.5rem; }
+  .site-header.scrolled { padding: 0.75rem 1.5rem; }
+  .brand { font-size: 0.72rem; letter-spacing: .2em; }
   .nav-toggle { display: flex; }
 
   .site-nav {
     display: none;
     position: fixed; inset: 0;
-    background: rgba(10,10,10,0.97);
+    background: var(--bg);
     flex-direction: column;
     align-items: center; justify-content: center;
-    z-index: 999;
+    z-index: 1001;
   }
   .site-nav.open { display: flex; }
+
+  /* Keep hamburger above the overlay */
+  .nav-toggle { z-index: 1002; position: relative; }
 
   .nav-list {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    gap: 1.5rem;
     font-size: 2rem;
+    text-align: center;
+    width: 100%;
   }
 
+  /* Minimum tap target for mobile nav links */
+  .nav-list a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Use dvh so address bar doesn't cause overflow */
   .hero {
-    padding: 4.5rem 1.5rem 2rem;
-    min-height: 100vh;
+    min-height: 100dvh;
+    padding: calc(4.5rem + env(safe-area-inset-top)) 1.5rem calc(2rem + env(safe-area-inset-bottom));
     align-items: flex-start;
     flex-direction: column;
   }
 
   .hero-grid {
-    min-height: calc(100vh - 6.5rem);
-    justify-content: space-between;
+    min-height: calc(100dvh - 6.5rem);
+    justify-content: flex-start;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
   }
 
   .hero-collage {
@@ -641,40 +685,63 @@ ul, ol { list-style: none; }
     gap: 2rem;
   }
 
+  /* Gallery single column on phones */
   .gallery-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 
-  .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+  /* Timeline stacks with better spacing */
+  .timeline-item { grid-template-columns: 1fr; gap: 0.6rem; }
+  .timeline-period { font-size: 0.9rem; }
 
   .about-stats { grid-template-columns: repeat(3, 1fr); }
 
   .section-title { font-size: clamp(2rem, 8vw, 3rem); }
 
-  .footer-row { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
+  /* Footer centered */
+  .footer-row { flex-direction: column; text-align: center; align-items: center; }
+  .footer-links { justify-content: center; gap: 1.25rem; }
   .site-footer { padding: 2rem 1.5rem; }
 
   /* Detail page mobile */
-  .detail-hero.section { padding-top: 5rem; }
-  .detail-image { max-height: 40vh; }
+  .detail-hero.section {
+    padding-top: calc(5rem + env(safe-area-inset-top));
+  }
+  .detail-image { max-height: 50vh; }
+
+  /* Detail body text less cramped */
+  .detail-body {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
 }
+
+/* =====================================================
+   RESPONSIVE — Small phones (480px)
+   ===================================================== */
 
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(2rem, 11vw, 3rem); }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  .contact-info li { grid-template-columns: 1fr; gap: 0.2rem; }
-}
 
-.gallery-readmore {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  margin: 0 1.25rem 1.25rem;
-  font-size: .75rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--crimson-2);
-  transition: gap .3s var(--ease);
-}
-.gallery-card-link:hover .gallery-readmore {
-  gap: .85rem;
+  .about-stats { grid-template-columns: 1fr 1fr; }
+
+  /* Contact info: label becomes uppercase field label when stacked */
+  .contact-info li {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+    padding: 0.75rem 0;
+  }
+  .contact-info strong {
+    font-size: 0.75rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* Button stretches full width on narrow screens */
+  .btn-primary {
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  /* Loader text scales down */
+  .loader-text { font-size: 2.2rem; }
 }
