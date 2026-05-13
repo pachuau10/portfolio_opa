@@ -712,6 +712,13 @@ ul, ol { list-style: none; }
     font-size: 1rem;
     padding-left: 1rem;
   }
+
+  /* Disable scroll animations on mobile — prevents jank on touch scroll */
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* =====================================================
